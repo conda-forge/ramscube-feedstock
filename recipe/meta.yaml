@@ -1,18 +1,18 @@
 {% set name = "ramscube" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/mheikenfeld/{{name}}/archive/v{{version}}.tar.gz
-  sha256: 68c1d3bf673d4fa3dc497b422552e58cf5ac40d20e7999132227578c846f548f
+  url: https://github.com/mheikenfeld/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 888a2e1f26eb4321e240b7f3da5820f4c352f422d5397c7105dd9ad4a0096640
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -23,8 +23,8 @@ requirements:
     - python
     - numpy
     - scipy
-    - iris 
-    - xarray 
+    - iris
+    - xarray
     - cf_units
 
 test:
@@ -38,12 +38,12 @@ test:
     - pytest ramscube/tests
 about:
   home: http://github.com/mheikenfeld/ramscube
-  license:  BSD-3-Clause 
+  license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Load data from RAMS output files (hdf5) to iris cubes'
+  summary: Load data from RAMS output files (hdf5) to iris cubes
 
-  description:  'Load data from RAMS output files (hdf5) to iris cubes'
+  description: Load data from RAMS output files (hdf5) to iris cubes
   doc_url: http://ramscube.readthedocs.io/
   dev_url: https://github.com/mheikenfeld/ramscube
 
