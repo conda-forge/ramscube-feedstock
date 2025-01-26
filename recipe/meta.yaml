@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/mheikenfeld/{{name}}/archive/v{{version}}.tar.gz
+  url: https://github.com/mheikenfeld/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 68c1d3bf673d4fa3dc497b422552e58cf5ac40d20e7999132227578c846f548f
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python
+    - python >={{ python_min }}
     - numpy
     - scipy
     - iris 
@@ -34,6 +34,7 @@ test:
     - ramscube/tests/test_dummy.py
   requires:
     - pytest
+    - python {{ python_min }}
   commands:
     - pytest ramscube/tests
 about:
